@@ -99,12 +99,12 @@ def parseAllFoldersAndFiles(path):
 
 # SCRIPT ---------------------------------------------------------------------------------------------------------------
 
-# si le répertoire de travail (celui dans lequel on souhaite stocker nos fichiers file) n'existe pas...
+# Si le répertoire de travail (celui dans lequel on souhaite stocker nos fichiers file) n'existe pas...
 # ... création de ce répertoire
 if not os.path.isdir(currentDirectory):
     os.makedirs(currentDirectory)
 
-# désignation du répertoire de travail comme répertoire courant
+# Désignation du répertoire de travail comme répertoire courant
 os.chdir(currentDirectory)
 
 # Création du fichier file + permission pour le script d'écrire dans file
@@ -123,7 +123,7 @@ for path in paths.values():
     file.write("\nListe des répertoires, sous-répetoires et descendants du dossier " + path + "\n")
     parseAllFoldersAndFiles(path)
     file.write("\n\n################################################################################ \n")
-    print("Script éxécuté avec succès.")
+    print("Script exécuté avec succès.")
 
 # Fermeture du fichier file
 file.close()
