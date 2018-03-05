@@ -113,7 +113,7 @@ os.chdir(currentDirectory)
 file = open(formatFileName(), "w", encoding="utf-8")
 
 # Ecriture des données nécessaires sur le fichier file
-print("Exécution du script : création du (ou des) fichier(s) de sauvegarde. "
+print("Exécution du script slimer_script: création du (ou des) fichier(s) de sauvegarde. "
       "Cette opération peut prendre jusqu'à plusieurs minutes...")
 
 for path in paths.values():
