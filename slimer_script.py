@@ -124,10 +124,10 @@ for path in paths.values():
     file.write("\nList of files of the folder " + path + "\n")
     parseAllFoldersAndFiles(path)
     file.write("\n\n################################################################################ \n")
-    print("It's done !.")
 
 # File file closure
 file.close()
+print("It's done !.")
 
 # Copying the file file to another backup directory (another hard drive for exemple)
 if '' not in otherDirectories:
