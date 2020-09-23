@@ -33,10 +33,10 @@ def create_timestamped_directory(path):
     return format_timestamped_subdirectory
 
 
-def create_timestamped_and_named_file_name(application_name):
+def create_timestamped_and_named_file_name(application_name, file_name):
     current_date = time.strftime("%Y%m%d")
     current_time = time.strftime("%H%M%S")
-    format_file_name = current_date + "_" + current_time + "_" + application_name + "_log.txt"
+    format_file_name = current_date + "_" + current_time + "_" + application_name + file_name
     return format_file_name
 
 

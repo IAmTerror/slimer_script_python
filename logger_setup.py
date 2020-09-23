@@ -16,7 +16,7 @@ logger.setLevel(logging.INFO)
 # creation of the formatter
 formatter = logging.Formatter('[%(asctime)s] [%(levelname)s] : %(message)s')
 
-file_name = create_timestamped_and_named_file_name(APPLICATION_NAME)
+file_name = create_timestamped_and_named_file_name(APPLICATION_NAME, LOGGER_FILE_NAME)
 
 # creation of the first handler which redirect traces to a log file
 file_handler = RotatingFileHandler(logger_folder + '/' + file_name, 'a', 1000000, 1)
