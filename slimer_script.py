@@ -8,7 +8,6 @@ from logger_setup import *
 
 def slimer_script():
     pass
-
     # LOG_FILE = open(format_file_name(), "w", encoding="utf-8")
     #
     # print("SLIMER SCRIPT is currently running : creation of the backup file(s). "

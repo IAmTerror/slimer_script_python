@@ -18,10 +18,8 @@ def create_directory(path):
     os.chdir(path)
 
 
-def create_timestamped_directory(path):
-    current_date = time.strftime("%Y%m%d")
-    current_time = time.strftime("%H%M%S")
-    format_timestamped_subdirectory = path + "/" + current_date + "_" + current_time
+def create_timestamped_directory(path, timestamp):
+    format_timestamped_subdirectory = path + "/" + timestamp
     logging.info('creating the folder ' + format_timestamped_subdirectory + "...")
     if not os.path.isdir(format_timestamped_subdirectory):
         os.makedirs(format_timestamped_subdirectory)
@@ -33,10 +31,8 @@ def create_timestamped_directory(path):
     return format_timestamped_subdirectory
 
 
-def create_timestamped_and_named_file_name(application_name, file_name):
-    current_date = time.strftime("%Y%m%d")
-    current_time = time.strftime("%H%M%S")
-    format_file_name = current_date + "_" + current_time + "_" + application_name + file_name
+def create_timestamped_and_named_file_name(application_name, file_name, timestamp):
+    format_file_name = timestamp + "_" + application_name + file_name
     return format_file_name
 
 
