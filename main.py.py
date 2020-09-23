@@ -14,24 +14,8 @@
 # !/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import os
-import time
-import shutil
 from utilities import *
 from constants import *
-
-# GLOBAL VARIABLES -----------------------------------------------------------------------------------------------------
-
-
-
-
-
-# FUNCTIONS ------------------------------------------------------------------------------------------------------------
-
-
-
-
-# SCRIPT ---------------------------------------------------------------------------------------------------------------
 
 if not os.path.isdir(BACKUP_FOLDER):
     os.makedirs(BACKUP_FOLDER)
@@ -39,17 +23,17 @@ if not os.path.isdir(BACKUP_FOLDER):
 # Designation of the working directory as current directory
 os.chdir(BACKUP_FOLDER)
 
-LOG_FILE = open(formatFileName(), "w", encoding="utf-8")
+LOG_FILE = open(format_file_name(), "w", encoding="utf-8")
 
 print("SLIMER SCRIPT is currently running : creation of the backup file(s). "
       "This can take up to several minutes...")
 
 for path in DIRECTORIES_TO_BACKUP.values():
     LOG_FILE.write("\nList of directories, subdirectories and descendants of the folder " + path + "\n")
-    parseDirs(path)
+    parse_directories(path)
     LOG_FILE.write("\n\n################################################################################ \n")
     LOG_FILE.write("\nList of files of the folder " + path + "\n")
-    parseAllFoldersAndFiles(path)
+    parse_all_folders_and_files(path)
     LOG_FILE.write("\n\n################################################################################ \n")
 
 LOG_FILE.close()

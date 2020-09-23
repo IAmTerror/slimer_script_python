@@ -2,26 +2,27 @@
 # -*- coding: utf-8 -*-
 
 import time
+import os
 from constants import *
 
 
-def formatFileName():
-    currentDate = time.strftime("%Y%m%d")
-    currentTime = time.strftime("%H%M%S")
-    formatFileName = currentDate + "_" + currentTime + "_log_slimerscript.txt"
-    return formatFileName
+def format_file_name():
+    current_date = time.strftime("%Y%m%d")
+    current_time = time.strftime("%H%M%S")
+    format_file_name = current_date + "_" + current_time + "_log_slimerscript.txt"
+    return format_file_name
 
 
-def parseDirs(path):
-    nbDirectories = 0
+def parse_directories(path):
+    number_of_directories = 0
     for root, dirs, files in os.walk(path):
         LOG_FILE.write("\n" + root)
-        nbDirectories += 1
-    LOG_FILE.write("\n\nnumber of folders in the directory " + path + " : " + str(nbDirectories - 1))
+        number_of_directories += 1
+    LOG_FILE.write("\n\nnumber of folders in the directory " + path + " : " + str(number_of_directories - 1))
 
 
-def parseAllFoldersAndFiles(path):
-    nbFiles = 0
+def parse_all_folders_and_files(path):
+    number_of_files = 0
     for root, dirs, files in os.walk(path):
         LOG_FILE.write("\n" + root)
         for filename in files:
@@ -34,8 +35,8 @@ def parseAllFoldersAndFiles(path):
             # in the form of a timestamp
             timestamp = os.path.getmtime(os.path.join(root, filename))
             # timestamp conversion in the form of : DD/MM/YY HH:MM:SS
-            timeFormatTemp = time.gmtime(timestamp)
-            timeFormat = time.strftime("%x %X", timeFormatTemp)
-            LOG_FILE.write("\n" + "--- " + filename + " *** " + timeFormat + " *** " + str(size) + " Ko")
-            nbFiles += 1
-    LOG_FILE.write("\n\nnumber of files in the directory " + path + " : " + str(nbFiles))
+            time_format_temp = time.gmtime(timestamp)
+            time_format = time.strftime("%x %X", time_format_temp)
+            LOG_FILE.write("\n" + "--- " + filename + " *** " + time_format + " *** " + str(size) + " Ko")
+            number_of_files += 1
+    LOG_FILE.write("\n\nnumber of files in the directory " + path + " : " + str(number_of_files))
