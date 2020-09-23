@@ -3,9 +3,7 @@ from utilities import *
 
 # LOGGER PRECONDITIONS -------------------------------------------------------------------------------------------------
 
-logger_folder = SLIMER_SCRIPT_ROOT_APP_PATH + "/" + time.strftime("%Y%m%d") + "_" + time.strftime("%H%M%S")
-
-create_directory(logger_folder)
+logger_folder = create_timestamped_directory(SLIMER_SCRIPT_ROOT_APP_PATH)
 
 # LOGGER CONFIGURATION -------------------------------------------------------------------------------------------------
 
@@ -17,7 +15,6 @@ logger.setLevel(logging.INFO)
 
 # creation of the formatter
 formatter = logging.Formatter('[%(asctime)s] [%(levelname)s] : %(message)s')
-
 
 file_name = create_timestamped_and_named_file_name(APPLICATION_NAME)
 

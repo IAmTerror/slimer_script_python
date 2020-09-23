@@ -18,6 +18,21 @@ def create_directory(path):
     os.chdir(path)
 
 
+def create_timestamped_directory(path):
+    current_date = time.strftime("%Y%m%d")
+    current_time = time.strftime("%H%M%S")
+    format_timestamped_subdirectory = path + "/" + current_date + "_" + current_time
+    logging.info('creating the folder ' + format_timestamped_subdirectory + "...")
+    if not os.path.isdir(format_timestamped_subdirectory):
+        os.makedirs(format_timestamped_subdirectory)
+        logging.info("the folder " + format_timestamped_subdirectory + " was successfully created")
+    else:
+        logging.info("the folder " + format_timestamped_subdirectory + " already exists, it's ok")
+    # Designation of the working directory as current directory
+    os.chdir(format_timestamped_subdirectory)
+    return format_timestamped_subdirectory
+
+
 def create_timestamped_and_named_file_name(application_name):
     current_date = time.strftime("%Y%m%d")
     current_time = time.strftime("%H%M%S")
