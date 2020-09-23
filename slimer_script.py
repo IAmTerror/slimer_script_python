@@ -6,20 +6,21 @@ from constants import *
 from logger_setup import *
 
 
-def slimer_script():
+def slimer_script(timestamp):
     pass
-    # LOG_FILE = open(format_file_name(), "w", encoding="utf-8")
+    # backup_file = open(create_timestamped_and_named_file_name(timestamp, SLIMER_SCRIPT_BACKUP_FILE_END_NAME,
+    #                                                            APPLICATION_NAME), "w", encoding="utf-8")
     #
     # print("SLIMER SCRIPT is currently running : creation of the backup file(s). "
     #       "This can take up to several minutes...")
     #
     # for path in DIRECTORIES_TO_BACKUP.values():
-    #     LOG_FILE.write("\nList of directories, subdirectories and descendants of the folder " + path + "\n")
+    #     backup_file.write("\nList of directories, subdirectories and descendants of the folder " + path + "\n")
     #     parse_directories(path)
-    #     LOG_FILE.write("\n\n################################################################################ \n")
-    #     LOG_FILE.write("\nList of files of the folder " + path + "\n")
+    #     backup_file.write("\n\n################################################################################ \n")
+    #     backup_file.write("\nList of files of the folder " + path + "\n")
     #     parse_all_folders_and_files(path)
-    #     LOG_FILE.write("\n\n################################################################################ \n")
+    #     backup_file.write("\n\n################################################################################ \n")
     #
-    # LOG_FILE.close()
+    # backup_file.close()
     # print("It's done !.")

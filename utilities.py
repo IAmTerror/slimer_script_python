@@ -31,8 +31,8 @@ def create_timestamped_directory(path, timestamp):
     return format_timestamped_subdirectory
 
 
-def create_timestamped_and_named_file_name(application_name, file_name, timestamp):
-    format_file_name = timestamp + "_" + application_name + file_name
+def create_timestamped_and_named_file_name(timestamp, file_name, application_name=None):
+    format_file_name = timestamp + "_" + application_name + "_" + file_name
     return format_file_name
 
 

@@ -26,7 +26,7 @@ logger_setup(logger_folder, timestamp)
 logging.info(SLIMER_SCRIPT_STARTING_MESSAGE)
 
 try:
-    slimer_script()
+    slimer_script(timestamp)
     logging.info(SLIMER_SCRIPT_ENDING_MESSAGE)
 except Exception as e:
     logging.error("The program ended unexpectedly !")
