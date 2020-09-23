@@ -36,14 +36,6 @@ def create_timestamped_and_named_file_name(timestamp, file_name, application_nam
     return format_file_name
 
 
-# def format_file_name():
-#     current_date = time.strftime("%Y%m%d")
-#     current_time = time.strftime("%H%M%S")
-#     format_file_name = current_date + "_" + current_time + "_log_slimerscript.txt"
-#     return format_file_name
-#
-#
-
 # def parse_directories(path):
 #     number_of_directories = 0
 #     for root, dirs, files in os.walk(path):
