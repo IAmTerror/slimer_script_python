@@ -1,29 +1,13 @@
-#        .__  .__                                           .__        __
-#   _____|  | |__| _____   ___________    ______ ___________|__|______/  |_
-#  /  ___/  | |  |/     \_/ __ \_  __ \  /  ___// ___\_  __ \  \____ \   __\
-#  \___ \|  |_|  |  Y Y  \  ___/|  | \/  \___ \\  \___|  | \/  |  |_> >  |
-# /____  >____/__|__|_|  /\___  >__|    /____  >\___  >__|  |__|   __/|__|
-#      \/              \/     \/             \/     \/         |__|
-
-# Author :
-# +-+-+-+-+-+-+-+-+-+
-# |I|A|m|T|e|r|r|o|r|
-# +-+-+-+-+-+-+-+-+-+
-
-
 # !/usr/bin/python
 # -*- coding: utf-8 -*-
 
 from utilities import *
 from constants import *
+from logger_setup import *
 
 
 def slimer_script():
-    if not os.path.isdir(BACKUP_FOLDER):
-        os.makedirs(BACKUP_FOLDER)
-
-    # Designation of the working directory as current directory
-    os.chdir(BACKUP_FOLDER)
+    create_directory()
 
     # LOG_FILE = open(format_file_name(), "w", encoding="utf-8")
     #

@@ -4,6 +4,7 @@
 import time
 import os
 from constants import *
+import logging
 
 def create_directory(path):
     logging.info('creating the folder ' + path + "...")
