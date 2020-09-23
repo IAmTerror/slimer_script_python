@@ -1,9 +1,11 @@
 from logging.handlers import RotatingFileHandler
 from utilities import *
 
+# LOGGER PRECONDITIONS -------------------------------------------------------------------------------------------------
 
-logger_application_name = "logger"
+logger_folder = SLIMER_SCRIPT_ROOT_APP_PATH + "/" + time.strftime("%Y%m%d") + "_" + time.strftime("%H%M%S")
 
+create_directory(logger_folder)
 
 # LOGGER CONFIGURATION -------------------------------------------------------------------------------------------------
 
@@ -16,11 +18,12 @@ logger.setLevel(logging.INFO)
 # creation of the formatter
 formatter = logging.Formatter('[%(asctime)s] [%(levelname)s] : %(message)s')
 
-file_name = create_timestamped_and_named_file_name(logger_application_name)
+
+file_name = create_timestamped_and_named_file_name(APPLICATION_NAME)
 
 # creation of the first handler which redirect traces to a log file
-file_handler = RotatingFileHandler(PD_SCRIPT_ROOT_LOGS_PATH + "/" + logger_application_name + '/'
-                                   + file_name, 'a', 1000000, 1)
+file_handler = RotatingFileHandler(logger_folder + '/' + file_name, 'a', 1000000, 1)
+
 # set level of the first handler to DEBUG
 file_handler.setLevel(logging.INFO)
 # use formatter for set first handler file name generation
@@ -48,3 +51,4 @@ logger.addHandler(stream_handler)
 #     upload_file_to_server_ftp_without_logging_messages(file, file_name, logger_application_name)
 #
 #     file.close()
+""

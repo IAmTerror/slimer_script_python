@@ -17,11 +17,11 @@
 from slimer_script import *
 from alerts import *
 
-logging.info(PD_SCRIPT_STARTING_MESSAGE)
+logging.info(SLIMER_SCRIPT_STARTING_MESSAGE)
 
 try:
     slimer_script()
-    logging.info(PD_SCRIPT_ENDING_MESSAGE)
+    logging.info(SLIMER_SCRIPT_ENDING_MESSAGE)
 except Exception as e:
     logging.error("The program ended unexpectedly !")
     logging.error("Error: " + str(e))

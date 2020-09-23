@@ -7,7 +7,7 @@ from logger_setup import *
 
 
 def slimer_script():
-    create_directory()
+    pass
 
     # LOG_FILE = open(format_file_name(), "w", encoding="utf-8")
     #
