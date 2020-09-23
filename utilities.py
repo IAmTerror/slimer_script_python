@@ -5,6 +5,16 @@ import time
 import os
 from constants import *
 
+def create_directory(path):
+    logging.info('creating the folder ' + path + "...")
+    if not os.path.isdir(path):
+        os.makedirs(path)
+        logging.info("the folder " + path + " was successfully created")
+    else:
+        logging.info("the folder " + path + " already exists, it's ok")
+
+    # Designation of the working directory as current directory
+    os.chdir(path)
 
 def format_file_name():
     current_date = time.strftime("%Y%m%d")
