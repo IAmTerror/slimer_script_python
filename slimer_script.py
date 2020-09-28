@@ -3,15 +3,14 @@
 
 from utilities import *
 from constants import *
-from logger_setup import *
 
 
 def slimer_script():
     backup_file = open(create_timestamped_and_named_file_name(SLIMER_SCRIPT_BACKUP_FILE_END_NAME,
                                                               APPLICATION_NAME), "w", encoding="utf-8")
 
-    logging.info("SLIMER SCRIPT is currently running : creation of the backup file(s). "
-                 "This can take up to several minutes...")
+    logging.info("SLIMER SCRIPT is currently running : creation of the backup file. "
+                 "This can take up a few minutes...")
 
     for path in DIRECTORIES_TO_BE_SCANNED_FOR_BACKUP.values():
         backup_file.write("\nList of directories, subdirectories and descendants of the folder " + path + "\n")
@@ -22,4 +21,4 @@ def slimer_script():
         backup_file.write("\n\n################################################################################ \n")
 
     backup_file.close()
-    logging.info("It's done !")
+    logging.info("All paths have been scanned. The backup file is saved")

@@ -43,7 +43,7 @@ def parse_directories(path, backup_file):
     for root, dirs, files in os.walk(path):
         backup_file.write("\n" + root)
         number_of_directories += 1
-    backup_file.write("\n\nnumber of folders in the directory " + path + " : " + str(number_of_directories - 1))
+    backup_file.write("\n\nNumber of folders in the directory " + path + " : " + str(number_of_directories - 1))
 
 
 def parse_all_folders_and_files(path, backup_file):
@@ -64,4 +64,4 @@ def parse_all_folders_and_files(path, backup_file):
             time_format = time.strftime("%x %X", time_format_temp)
             backup_file.write("\n" + "--- " + filename + " *** " + time_format + " *** " + str(size) + " Ko")
             number_of_files += 1
-    backup_file.write("\n\nnumber of files in the directory " + path + " : " + str(number_of_files))
+    backup_file.write("\n\nNumber of files in the directory " + path + " : " + str(number_of_files))

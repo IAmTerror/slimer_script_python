@@ -1,8 +1,6 @@
 from logging.handlers import RotatingFileHandler
 from utilities import *
 
-logger_subdirectory_name = "logger"
-
 # LOGGER CONFIGURATION -------------------------------------------------------------------------------------------------
 
 # creation of the logger object that we will use to write in the logs
@@ -17,7 +15,7 @@ formatter = logging.Formatter('[%(asctime)s] [%(levelname)s] : %(message)s')
 file_name = create_timestamped_and_named_file_name(APPLICATION_NAME, LOGGER_FILE_END_NAME)
 
 # creation of the first handler which redirect traces to a log file
-file_handler = RotatingFileHandler(SLIMER_SCRIPT_ROOT_APP_PATH + '/' + logger_subdirectory_name +
+file_handler = RotatingFileHandler(SLIMER_SCRIPT_ROOT_APP_PATH + '/' + LOGGER_SUBDIRECTORY_NAME +
                                    '/' + file_name, 'a', 1000000, 1)
 
 # set level of the first handler to DEBUG

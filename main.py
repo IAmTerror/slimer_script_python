@@ -16,6 +16,7 @@
 
 from slimer_script import *
 from alerts import *
+from logger_setup import *
 
 logging.info(SLIMER_SCRIPT_STARTING_MESSAGE)
 
