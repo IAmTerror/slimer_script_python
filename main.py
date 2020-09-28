@@ -17,16 +17,12 @@
 from slimer_script import *
 from alerts import *
 
-timestamp = time.strftime("%Y%m%d") + "_" + time.strftime("%H%M%S")
-
-logger_folder = create_timestamped_directory(SLIMER_SCRIPT_ROOT_APP_PATH, timestamp)
-
-logger_setup(logger_folder, timestamp)
-
 logging.info(SLIMER_SCRIPT_STARTING_MESSAGE)
 
+logger_folder = create_timestamped_directory(SLIMER_SCRIPT_ROOT_APP_PATH)
+
 try:
-    slimer_script(timestamp)
+    slimer_script()
     logging.info(SLIMER_SCRIPT_ENDING_MESSAGE)
 except Exception as e:
     logging.error("The program ended unexpectedly !")

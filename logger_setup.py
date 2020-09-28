@@ -1,38 +1,39 @@
 from logging.handlers import RotatingFileHandler
 from utilities import *
 
+# LOGGER PRECONDITIONS -------------------------------------------------------------------------------------------------
 
-def logger_setup(logger_folder, timestamp):
+logger_folder = create_timestamped_directory(SLIMER_SCRIPT_ROOT_APP_PATH)
 
-    # LOGGER CONFIGURATION ---------------------------------------------------------------------------------------------
+# LOGGER CONFIGURATION -------------------------------------------------------------------------------------------------
 
-    # creation of the logger object that we will use to write in the logs
-    logger = logging.getLogger()
+# creation of the logger object that we will use to write in the logs
+logger = logging.getLogger()
 
-    # set level logger to DEBUG for get all traces
-    logger.setLevel(logging.INFO)
+# set level logger to DEBUG for get all traces
+logger.setLevel(logging.INFO)
 
-    # creation of the formatter
-    formatter = logging.Formatter('[%(asctime)s] [%(levelname)s] : %(message)s')
+# creation of the formatter
+formatter = logging.Formatter('[%(asctime)s] [%(levelname)s] : %(message)s')
 
-    file_name = create_timestamped_and_named_file_name(timestamp, LOGGER_FILE_END_NAME, APPLICATION_NAME)
+file_name = create_timestamped_and_named_file_name(APPLICATION_NAME, LOGGER_FILE_END_NAME)
 
-    # creation of the first handler which redirect traces to a log file
-    file_handler = RotatingFileHandler(logger_folder + '/' + file_name, 'a', 1000000, 1)
+# creation of the first handler which redirect traces to a log file
+file_handler = RotatingFileHandler(logger_folder + '/' + file_name, 'a', 1000000, 1)
 
-    # set level of the first handler to DEBUG
-    file_handler.setLevel(logging.INFO)
-    # use formatter for set first handler file name generation
-    file_handler.setFormatter(formatter)
-    # add the first handler to the logger
-    logger.addHandler(file_handler)
+# set level of the first handler to DEBUG
+file_handler.setLevel(logging.INFO)
+# use formatter for set first handler file name generation
+file_handler.setFormatter(formatter)
+# add the first handler to the logger
+logger.addHandler(file_handler)
 
-    # creation of a second handler which redirect traces to the console
-    stream_handler = logging.StreamHandler()
-    # # set level of the second handler to DEBUG
-    stream_handler.setLevel(logging.DEBUG)
-    # add the second handler to the logger
-    logger.addHandler(stream_handler)
+# creation of a second handler which redirect traces to the console
+stream_handler = logging.StreamHandler()
+# # set level of the second handler to DEBUG
+stream_handler.setLevel(logging.DEBUG)
+# add the second handler to the logger
+logger.addHandler(stream_handler)
 
 
 # LOGGER SCRIPT --------------------------------------------------------------------------------------------------------

@@ -6,8 +6,8 @@ from constants import *
 from logger_setup import *
 
 
-def slimer_script(timestamp):
-    backup_file = open(create_timestamped_and_named_file_name(timestamp, SLIMER_SCRIPT_BACKUP_FILE_END_NAME,
+def slimer_script():
+    backup_file = open(create_timestamped_and_named_file_name(SLIMER_SCRIPT_BACKUP_FILE_END_NAME,
                                                               APPLICATION_NAME), "w", encoding="utf-8")
 
     logging.info("SLIMER SCRIPT is currently running : creation of the backup file(s). "
