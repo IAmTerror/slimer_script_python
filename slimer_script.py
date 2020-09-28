@@ -13,13 +13,13 @@ def slimer_script(timestamp):
     logging.info("SLIMER SCRIPT is currently running : creation of the backup file(s). "
                  "This can take up to several minutes...")
 
-    # for path in DIRECTORIES_TO_BACKUP.values():
-    #     backup_file.write("\nList of directories, subdirectories and descendants of the folder " + path + "\n")
-    #     parse_directories(path)
-    #     backup_file.write("\n\n################################################################################ \n")
-    #     backup_file.write("\nList of files of the folder " + path + "\n")
-    #     parse_all_folders_and_files(path)
-    #     backup_file.write("\n\n################################################################################ \n")
+    for path in DIRECTORIES_TO_BE_SCANNED_FOR_BACKUP.values():
+        backup_file.write("\nList of directories, subdirectories and descendants of the folder " + path + "\n")
+        parse_directories(path, backup_file)
+        backup_file.write("\n\n################################################################################ \n")
+        backup_file.write("\nList of files of the folder " + path + "\n")
+        parse_all_folders_and_files(path, backup_file)
+        backup_file.write("\n\n################################################################################ \n")
 
     backup_file.close()
     logging.info("It's done !")
