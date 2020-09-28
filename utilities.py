@@ -3,8 +3,11 @@
 
 import time
 import os
+from credentials import *
 from constants import *
 import logging
+import ftplib
+from ftplib import FTP
 
 
 def create_directory(path):
@@ -65,3 +68,31 @@ def parse_all_folders_and_files(path, backup_file):
             backup_file.write("\n" + "--- " + filename + " *** " + time_format + " *** " + str(size) + " Ko")
             number_of_files += 1
     backup_file.write("\n\nNumber of files in the directory " + path + " : " + str(number_of_files))
+
+
+def get_the_latest_file_in_a_folder(path):
+    list_of_files = os.listdir(path)  # get a list of all file names in a folder
+    # get a list of absolute paths for previously recovered files
+    paths = [os.path.join(path, basename) for basename in list_of_files]
+    # return the latest (most recent modified metadata) file
+    return max(paths, key=os.path.getctime)
+
+
+def upload_file_to_server_ftp_without_logging_messages(file, filename, subdirectory):
+    ftp = FTP(SEEDBOX_DOMAIN_NAME)  # connect to host, default port
+    try:
+        print("trying to connect the ftp server...")
+        ftp.login(user=SEEDBOX_USER_NAME, passwd=SEEDBOX_PASSWD)  # login with credentials
+        print('ftp connection succeed !')
+        try:
+            # TODO : se placer dans le bon repertoire (ok) du serveur et
+            #  creer un dossier *nom application* s'il n'existe pas
+            ftp.cwd(SEEDBOX_ROOT_SLIMER_SCRIPT_PATH + "/" + subdirectory)  # Set the current directory on the server
+            print('sending ' + filename + ' file to the ftp server... (' + subdirectory + ' file)')
+            ftp.storbinary('STOR ' + filename + '', file)  # uploading file to the server
+            print(filename + ' uploaded successfully!')
+        except ftplib.all_errors:
+            print('unable to make directories')
+    except ftplib.all_errors:
+        print('unable to connect to ftp server')
+    ftp.quit()

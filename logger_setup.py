@@ -1,5 +1,6 @@
 from logging.handlers import RotatingFileHandler
 from utilities import *
+from constants import *
 
 # LOGGER CONFIGURATION -------------------------------------------------------------------------------------------------
 
@@ -15,8 +16,7 @@ formatter = logging.Formatter('[%(asctime)s] [%(levelname)s] : %(message)s')
 file_name = create_timestamped_and_named_file_name(APPLICATION_NAME, LOGGER_FILE_END_NAME)
 
 # creation of the first handler which redirect traces to a log file
-file_handler = RotatingFileHandler(SLIMER_SCRIPT_ROOT_APP_PATH + '/' + LOGGER_SUBDIRECTORY_NAME +
-                                   '/' + file_name, 'a', 1000000, 1)
+file_handler = RotatingFileHandler(SLIMER_SCRIPT_ROOT_LOGS_PATH + '/' + file_name, 'a', 1000000, 1)
 
 # set level of the first handler to DEBUG
 file_handler.setLevel(logging.INFO)
@@ -35,14 +35,12 @@ logger.addHandler(stream_handler)
 
 # LOGGER SCRIPT --------------------------------------------------------------------------------------------------------
 
+def logger_script():
+    latest_logger_file = get_the_latest_file_in_a_folder(SLIMER_SCRIPT_ROOT_LOGS_PATH)
 
-# def logger_script():
-#     latest_logger_file = get_the_latest_file_in_a_folder(PD_SCRIPT_ROOT_LOGS_PATH + "/" + logger_application_name)
-#
-#     # opens the file for reading only in binary format in order to upload
-#     file = open(latest_logger_file, "rb")
-#
-#     upload_file_to_server_ftp_without_logging_messages(file, file_name, logger_application_name)
-#
-#     file.close()
-""
+    # opens the file for reading only in binary format in order to upload
+    file = open(latest_logger_file, "rb")
+
+    upload_file_to_server_ftp_without_logging_messages(file, file_name, LOGGER_SUBDIRECTORY_NAME)
+
+    file.close()

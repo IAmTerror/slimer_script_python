@@ -16,7 +16,7 @@ def slimer_script():
         backup_file.write("\nList of directories, subdirectories and descendants of the folder " + path + "\n")
         parse_directories(path, backup_file)
         backup_file.write("\n\n################################################################################ \n")
-        backup_file.write("\nList of files of the folder " + path + "\n")
+        backup_file.write("\nList of files in the folder " + path + "\n")
         parse_all_folders_and_files(path, backup_file)
         backup_file.write("\n\n################################################################################ \n")
 
