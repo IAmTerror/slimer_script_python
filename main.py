@@ -20,7 +20,7 @@ from logger_setup import *
 
 logging.info(SLIMER_SCRIPT_STARTING_MESSAGE)
 
-logger_folder = create_timestamped_directory(SLIMER_SCRIPT_ROOT_APP_PATH)
+logger_folder = create_directory(SLIMER_SCRIPT_ROOT_APP_PATH)
 
 try:
     slimer_script()
