@@ -16,7 +16,7 @@ formatter = logging.Formatter('[%(asctime)s] [%(levelname)s] : %(message)s')
 file_name = create_timestamped_and_named_file_name(APPLICATION_NAME, LOGGER_FILE_END_NAME)
 
 # creation of the first handler which redirect traces to a log file
-file_handler = RotatingFileHandler(SLIMER_SCRIPT_ROOT_LOGS_PATH + '/' + file_name, 'a', 1000000, 1)
+file_handler = RotatingFileHandler(SLIMER_SCRIPT_ROOT_LOGGER_PATH + '/' + file_name, 'a', 1000000, 1)
 
 # set level of the first handler to DEBUG
 file_handler.setLevel(logging.INFO)
@@ -36,7 +36,7 @@ logger.addHandler(stream_handler)
 # LOGGER SCRIPT --------------------------------------------------------------------------------------------------------
 
 def logger_script():
-    latest_logger_file = get_the_latest_file_in_a_folder(SLIMER_SCRIPT_ROOT_LOGS_PATH)
+    latest_logger_file = get_the_latest_file_in_a_folder(SLIMER_SCRIPT_ROOT_LOGGER_PATH)
 
     # opens the file for reading only in binary format in order to upload
     file = open(latest_logger_file, "rb")

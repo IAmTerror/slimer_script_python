@@ -20,7 +20,7 @@ from logger_setup import *
 
 logging.info(SLIMER_SCRIPT_STARTING_MESSAGE)
 
-logger_folder = create_directory(SLIMER_SCRIPT_ROOT_APP_PATH)
+logger_folder = create_directory(SLIMER_SCRIPT_ROOT_LOGS_PATH)
 
 try:
     slimer_script()
@@ -31,5 +31,5 @@ except Exception as e:
 
 logger_script()
 
-# alm = Alerts()
-# alm.run_script()
+alm = Alerts()
+alm.run_script()
