@@ -38,6 +38,7 @@ def parse_directories(path, backup_file):
 def parse_all_folders_and_files(path, backup_file):
     number_of_files = 0
     for root, dirs, files in os.walk(path):
+        files = [os.path.join(dirs, f) for f in files if not SLIMER_SCRIPT_FILES_EXCLUDED_FROM_PARSING]
         backup_file.write("\n" + root)
         for file in files:
             path_name = os.path.join(root, file)
