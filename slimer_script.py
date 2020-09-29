@@ -22,3 +22,10 @@ def slimer_script():
 
     backup_file.close()
     logging.info("All paths have been scanned. The backup file is saved")
+
+    # opens the file for reading only in binary format in order to upload
+    file = open(backup_file.name, "rb")
+
+    upload_file_to_server_ftp(file, file.name)
+
+    file.close()

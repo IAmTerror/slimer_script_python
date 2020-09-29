@@ -78,6 +78,26 @@ def get_the_latest_file_in_a_folder(path):
     return max(paths, key=os.path.getctime)
 
 
+def upload_file_to_server_ftp(file, filename):
+    ftp = FTP(SEEDBOX_DOMAIN_NAME)  # connect to host, default port
+    try:
+        logging.info("trying to connect the ftp server...")
+        ftp.login(user=SEEDBOX_USER_NAME, passwd=SEEDBOX_PASSWD)  # login with credentials
+        logging.info('ftp connection succeed !')
+        try:
+            # TODO : se placer dans le bon repertoire (ok) du serveur et
+            #  creer un dossier *nom application* s'il n'existe pas
+            ftp.cwd(SEEDBOX_ROOT_SLIMER_SCRIPT_PATH)  # Set the current directory on the server
+            logging.info('sending ' + filename + ' file to the ftp server...')
+            ftp.storbinary('STOR ' + filename + '', file)  # uploading file to the server
+            logging.info(filename + ' uploaded successfully!')
+        except ftplib.all_errors:
+            logging.error('unable to make directories')
+    except ftplib.all_errors:
+        logging.error('unable to connect to ftp server')
+    ftp.quit()
+
+
 def upload_file_to_server_ftp_without_logging_messages(file, filename, subdirectory):
     ftp = FTP(SEEDBOX_DOMAIN_NAME)  # connect to host, default port
     try:
