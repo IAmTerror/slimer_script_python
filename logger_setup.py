@@ -24,7 +24,6 @@ file_handler.setLevel(logging.INFO)
 file_handler.setFormatter(formatter)
 # add the first handler to the logger
 logger.addHandler(file_handler)
-
 # creation of a second handler which redirect traces to the console
 stream_handler = logging.StreamHandler()
 # # set level of the second handler to DEBUG

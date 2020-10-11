@@ -29,7 +29,8 @@ except Exception as e:
     logging.error("The program ended unexpectedly !")
     logging.error("Error: " + str(e))
 
-logger_script()
-
-alm = Alerts()
-alm.run_script()
+# TODO
+# logger_script()
+#
+# alm = Alerts()
+# alm.run_script()

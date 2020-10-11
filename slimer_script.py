@@ -12,13 +12,13 @@ def slimer_script():
                                                               SLIMER_SCRIPT_BACKUP_FILE_END_NAME), "w",
                        encoding="utf-8")
 
+    logging.info(f"COMPUTER NAME : {computer_name}")
+    backup_file.write(f"COMPUTER NAME : {computer_name}")
+
     logging.info("SLIMER SCRIPT is currently running : creation of the backup file. "
                  "This can take up a few minutes...")
 
-    logging.info(f"Computer name : {computer_name}")
-
     for path in DIRECTORIES_TO_BE_SCANNED_FOR_BACKUP.values():
-        backup_file.write(f"Computer name : {computer_name}")
         backup_file.write(f"\n\nList of directories, subdirectories and descendants of the folder {path} \n")
         parse_directories(path, backup_file)
         backup_file.write("\n\n################################################################################ \n")
@@ -29,9 +29,10 @@ def slimer_script():
     backup_file.close()
     logging.info("All paths have been scanned. The backup file is saved")
 
+    # TODO
     # opens the file for reading only in binary format in order to upload
-    file = open(backup_file.name, "rb")
-
-    upload_file_to_server_ftp(file, file.name)
-
-    file.close()
+    # file = open(backup_file.name, "rb")
+    #
+    # upload_file_to_server_ftp(file, file.name)
+    #
+    # file.close()
