@@ -9,6 +9,7 @@ import logging
 import ftplib
 from ftplib import FTP
 import socket
+from pathlib import Path
 
 
 def create_directory(path):
@@ -40,18 +41,11 @@ def parse_directories(path, backup_file):
 def parse_all_folders_and_files(path, backup_file):
     number_of_files = 0
     for root, dirs, files in os.walk(path):
-        # files = [os.path.join(dirs, f) for f in files if not SLIMER_SCRIPT_FILES_EXCLUDED_FROM_PARSING]
         backup_file.write("\n" + root)
         for file in files:
             try:
                 path_name = os.path.join(root, file)
-                # getsize() method must take into parameters the full path of a file, i.e. his root...
-                # ... + his name. Join() method concatenate the two parameters
-                # getsize() returns a result in octets, the result was divided by 1024 for convert in Ko, then we add...
-                # ...  1 Ko for round up the result (Windows might make the same procedure for its explorer (?))
-                size = (os.path.getsize(os.path.join(root, path_name)) // 1024) + 1
-                # getmtime() method returns the date of the file's last modification...
-                # in the form of a timestamp
+                size = os.path.getsize(os.path.join(root, path_name))
                 timestamp = os.path.getmtime(os.path.join(root, path_name))
                 # timestamp conversion in the form of : DD/MM/YY HH:MM:SS
                 time_format_temp = time.gmtime(timestamp)
