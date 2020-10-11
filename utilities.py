@@ -8,6 +8,7 @@ from constants import *
 import logging
 import ftplib
 from ftplib import FTP
+import socket
 
 
 def create_directory(path):
@@ -104,3 +105,7 @@ def upload_file_to_server_ftp_without_logging_messages(file, filename, subdirect
     except ftplib.all_errors:
         print('unable to connect to ftp server')
     ftp.quit()
+
+
+def get_computer_name():
+    print(socket.gethostname())
