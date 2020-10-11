@@ -108,4 +108,5 @@ def upload_file_to_server_ftp_without_logging_messages(file, filename, subdirect
 
 
 def get_computer_name():
-    print(socket.gethostname())
+    computer_name = socket.gethostname()
+    return computer_name
