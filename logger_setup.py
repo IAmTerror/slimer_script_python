@@ -13,7 +13,7 @@ logger.setLevel(logging.INFO)
 # creation of the formatter
 formatter = logging.Formatter('[%(asctime)s] [%(levelname)s] : %(message)s')
 
-file_name = create_timestamped_and_named_file_name(APPLICATION_NAME, LOGGER_FILE_END_NAME)
+file_name = create_timestamped_and_named_file_name(APPLICATION_NAME + "_" + LOGGER_FILE_END_NAME)
 
 # creation of the first handler which redirect traces to a log file
 file_handler = RotatingFileHandler(SLIMER_SCRIPT_ROOT_LOGGER_PATH + '/' + file_name, 'a', 1000000, 1)

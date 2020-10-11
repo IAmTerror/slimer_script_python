@@ -6,17 +6,23 @@ from constants import *
 
 
 def slimer_script():
-    backup_file = open(create_timestamped_and_named_file_name(SLIMER_SCRIPT_BACKUP_FILE_END_NAME,
-                                                              APPLICATION_NAME), "w", encoding="utf-8")
+    computer_name = get_computer_name()
+
+    backup_file = open(create_timestamped_and_named_file_name(APPLICATION_NAME + "_" +
+                                                              SLIMER_SCRIPT_BACKUP_FILE_END_NAME), "w",
+                       encoding="utf-8")
 
     logging.info("SLIMER SCRIPT is currently running : creation of the backup file. "
                  "This can take up a few minutes...")
 
+    logging.info(f"Computer name : {computer_name}")
+
     for path in DIRECTORIES_TO_BE_SCANNED_FOR_BACKUP.values():
-        backup_file.write("\nList of directories, subdirectories and descendants of the folder " + path + "\n")
+        backup_file.write(f"Computer name : {computer_name}")
+        backup_file.write(f"\n\nList of directories, subdirectories and descendants of the folder {path} \n")
         parse_directories(path, backup_file)
         backup_file.write("\n\n################################################################################ \n")
-        backup_file.write("\nList of files in the folder " + path + "\n")
+        backup_file.write(f"\nList of files in the folder {path} \n")
         parse_all_folders_and_files(path, backup_file)
         backup_file.write("\n\n################################################################################ \n")
 
@@ -24,8 +30,8 @@ def slimer_script():
     logging.info("All paths have been scanned. The backup file is saved")
 
     # opens the file for reading only in binary format in order to upload
-    # file = open(backup_file.name, "rb")
-    #
-    # upload_file_to_server_ftp(file, file.name)
-    #
-    # file.close()
+    file = open(backup_file.name, "rb")
+
+    upload_file_to_server_ftp(file, file.name)
+
+    file.close()

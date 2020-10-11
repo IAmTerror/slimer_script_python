@@ -22,9 +22,10 @@ def create_directory(path):
     os.chdir(path)
 
 
-def create_timestamped_and_named_file_name(file_name, application_name=None):
+def create_timestamped_and_named_file_name(file_name):
+    computer_name = socket.gethostname()
     timestamp = time.strftime("%Y%m%d") + "_" + time.strftime("%H%M%S")
-    format_file_name = timestamp + "_" + application_name + "_" + file_name
+    format_file_name = f"{timestamp}_{computer_name}_{file_name}"
     return format_file_name
 
 
