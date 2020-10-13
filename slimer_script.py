@@ -5,6 +5,15 @@ from utilities import *
 from constants import *
 
 
+def upload_slimer_script_log(backup_file):
+    # opens the file for reading only in binary format in order to upload
+    file = open(backup_file.name, "rb")
+
+    upload_file_to_server_ftp(file, file.name)
+
+    file.close()
+
+
 def slimer_script():
     computer_name = get_computer_name()
 
@@ -30,9 +39,4 @@ def slimer_script():
     logging.info("All paths have been scanned. The backup file is saved")
 
     # TODO
-    # opens the file for reading only in binary format in order to upload
-    # file = open(backup_file.name, "rb")
-    #
-    # upload_file_to_server_ftp(file, file.name)
-    #
-    # file.close()
+    # upload_slimer_script_log(backup_file)
