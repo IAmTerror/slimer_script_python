@@ -32,6 +32,7 @@ def create_timestamped_and_named_file_name(file_name):
 def parse_directories(path, backup_file):
     number_of_directories = 0
     for root, dirs, files in os.walk(path):
+        dirs[:] = [d for d in dirs if d not in EXCLUDED_DIRECTORIES]
         backup_file.write("\n" + root)
         number_of_directories += 1
     backup_file.write("\n\nNumber of folders in the directory " + path + " : " + str(number_of_directories - 1))
@@ -40,6 +41,7 @@ def parse_directories(path, backup_file):
 def parse_all_folders_and_files(path, backup_file):
     number_of_files = 0
     for root, dirs, files in os.walk(path):
+        dirs[:] = [d for d in dirs if d not in EXCLUDED_DIRECTORIES]
         backup_file.write("\n" + root)
         for file in files:
             try:

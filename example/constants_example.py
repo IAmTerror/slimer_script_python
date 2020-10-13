@@ -1,7 +1,7 @@
 # !/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# CONFIGURATION VARIABLES ----------------------------------------------------------------------------------------------
+# CONFIGURATION VARIABLES (Requires a choice by the user !) ------------------------------------------------------------
 
 # Root of the disks or directories that you want to parse for data backup.
 # You can add others, by adding path3, path4 keys...
@@ -23,6 +23,11 @@ TRELLO_ALERT_URGENT_CUSTOM_LABEL_ID = ""
 
 
 # APPLICATION VARIABLES ------------------------------------------------------------------------------------------------
+
+# Directories to be excluded from parsing. Some directories can indeed cause bugs during parsing.
+# For example, under Linux, parsing some network disks (/run/user/***) can cause a freeze of the script execution...
+# ... without raising an exception !
+EXCLUDED_DIRECTORIES = ['run']
 
 APPLICATION_NAME = "slimer_script"
 LOGGER_SUBDIRECTORY_NAME = "logger"
