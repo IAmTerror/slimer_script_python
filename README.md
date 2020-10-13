@@ -40,6 +40,10 @@ Because I'm a man a little paranoid. If one of my many hard drives decides to di
     
 7. Run `main.py` ! Additional information : Slimer Script is above all intended to be executed automatically by your OS, via your task scheduler if you are on Windows, or `crontab` if you are on Linux.
 
+During the execution of Slimer Script, some non-critical errors may occur. These may be for example exceptions due to the inability to read certain files (insufficient rights, etc...). These errors will not prevent the script from executing properly.
+
+Warning : the execution of Slimer Script may take several minutes if you choose to parse one or more hard disks in their entirety. Please be patient !
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/IAmTerror/slimer_script_python/master/img/ghostbusters_logo.png" />
 </p>
