@@ -29,6 +29,14 @@ def create_timestamped_and_named_file_name(file_name):
     return format_file_name
 
 
+def count_files_in_a_directory(path):
+    files_count = 0
+    for root, dirs, files in os.walk(path):
+        dirs[:] = [d for d in dirs if d not in EXCLUDED_DIRECTORIES]
+        files_count += len(files)
+    return files_count
+
+
 def parse_directories(path, backup_file):
     number_of_directories = 0
     for root, dirs, files in os.walk(path):
@@ -38,8 +46,7 @@ def parse_directories(path, backup_file):
     backup_file.write("\n\nNumber of folders in the directory " + path + " : " + str(number_of_directories - 1))
 
 
-def parse_all_folders_and_files(path, backup_file):
-    number_of_files = 0
+def parse_all_folders_and_files(path, backup_file, files_count_in_path):
     for root, dirs, files in os.walk(path):
         dirs[:] = [d for d in dirs if d not in EXCLUDED_DIRECTORIES]
         backup_file.write("\n" + root)
@@ -52,10 +59,9 @@ def parse_all_folders_and_files(path, backup_file):
                 time_format_temp = time.gmtime(timestamp)
                 time_format = time.strftime("%x %X", time_format_temp)
                 backup_file.write("\n" + "--- " + path_name + " *** " + time_format + " *** " + str(size) + " Ko")
-                number_of_files += 1
             except Exception as e:
                 print("Error: " + str(e))
-    backup_file.write("\n\nNumber of files in the directory " + path + " : " + str(number_of_files))
+    backup_file.write("\n\nNumber of files in the directory " + path + " : " + str(files_count_in_path))
 
 
 def get_the_latest_file_in_a_folder(path):

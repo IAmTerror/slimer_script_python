@@ -28,12 +28,17 @@ def slimer_script():
                  "This can take up a few minutes...")
 
     for path in DIRECTORIES_TO_BE_SCANNED_FOR_BACKUP.values():
+        logging.info(f"Counting the number of files in the folder {path} ...")
+        files_count_in_path = count_files_in_a_directory(path)
+        logging.info(f"Number of files in the folder {path} : {files_count_in_path}")
+        logging.info(f"Backup of data (name, size and last modification date) of the files in the folder {path} ...")
         backup_file.write(f"\n\nList of directories, subdirectories and descendants of the folder {path} \n")
         parse_directories(path, backup_file)
         backup_file.write("\n\n################################################################################ \n")
         backup_file.write(f"\nList of files in the folder {path} \n")
-        parse_all_folders_and_files(path, backup_file)
+        parse_all_folders_and_files(path, backup_file, files_count_in_path)
         backup_file.write("\n\n################################################################################ \n")
+        logging.info(f"The backup of the data of the files in the directory {path} has been completed")
 
     backup_file.close()
     logging.info("All paths have been scanned. The backup file is saved")
