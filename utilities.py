@@ -1,15 +1,14 @@
 # !/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import time
-import os
-from credentials import *
-from constants import *
-import logging
 import ftplib
-from ftplib import FTP
+import logging
+import os
 import socket
-from pathlib import Path
+import time
+from ftplib import FTP
+from constants import *
+from credentials import *
 
 
 def create_directory(path):
