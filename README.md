@@ -38,7 +38,7 @@ Because I'm a man a little paranoid. If one of my many hard drives decides to di
     upload_slimer_script_log(backup_file)
     ```
     
-7. Run `main.py` ! Additional information : Slimer Script is above all intended to be executed automatically by your OS, via your task scheduler if you are on Windows, or crontab if you are on Linux.
+7. Run `main.py` ! Additional information : Slimer Script is above all intended to be executed automatically by your OS, via your task scheduler if you are on Windows, or `crontab` if you are on Linux.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/IAmTerror/slimer_script_python/master/img/ghostbusters_logo.png" />
