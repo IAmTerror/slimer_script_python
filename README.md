@@ -14,6 +14,8 @@ In case of a script execution error, a Trello alert is generated.
 
 ## Why I developed Phoenix Down Script ?
 
+Because I'm a man a little paranoid. If one of my many hard drives decides to die, this script probably won't be able to resurrect it, but at least I'll know immediately which files need to be restored.
+
 work in progress...
 
 <p align="center">
