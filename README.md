@@ -9,6 +9,6 @@
 work in progress...
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/IAmTerror/slimer_script_python/master/img/slimer.png" />
+  <img src="https://raw.githubusercontent.com/IAmTerror/slimer_script_python/master/img/ghostbusters_logo.png" />
 </p>
 
