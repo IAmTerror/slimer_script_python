@@ -6,6 +6,14 @@
 
 [![GNU GPL v3.0](https://img.shields.io/badge/licence-GNU%20GPL%20v3.0-blue)](https://github.com/IAmTerror/phoenix_down_script/blob/master/LICENSE) ![python v3.6](https://img.shields.io/badge/python-v3.6-blue)
 
+Slimer Script is a script written in Python whose goal is to parse all the files on a hard disk, in order to collect their name, their size, and their last modification date.
+
+These data are then saved as log files, saved locally, and uploaded to a server.
+
+In case of a script execution error, a Trello alert is generated.
+
+## Why I developed Phoenix Down Script ?
+
 work in progress...
 
 <p align="center">
