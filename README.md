@@ -16,6 +16,12 @@ In case of a script execution error, a Trello alert is generated.
 
 Because I'm a man a little paranoid. If one of my many hard drives decides to die, this script probably won't be able to resurrect it, but at least I'll know immediately which files need to be restored.
 
+## How to run Phoenix Down Script ?
+
+1. copy `constants_example.py` and `credentials_example.py` in `slimer_script/example` folder and paste them into the root of the application 
+2. rename `constants_example.py` and `credentials_example.py` respectively into `constants.py` and `credentials.py` 
+3. set values into `constants.py` and `credentials.py` (follow the instructions inside them)
+
 work in progress...
 
 <p align="center">
