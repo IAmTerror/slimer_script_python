@@ -3,6 +3,7 @@
 
 from utilities import *
 from constants import *
+import threading
 
 
 def upload_slimer_script_log(backup_file):

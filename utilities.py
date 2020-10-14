@@ -46,7 +46,14 @@ def parse_directories(path, backup_file):
     backup_file.write("\n\nNumber of folders in the directory " + path + " : " + str(number_of_directories - 1))
 
 
+def print_current_state_of_parsing_files(current_count_in_path, total_files_count_in_path, path):
+    percentage = round((current_count_in_path / total_files_count_in_path) * 100, 2)
+    print(f"files processed in {path} : {current_count_in_path} of {total_files_count_in_path} ({percentage}%)")
+
+
 def parse_all_folders_and_files(path, backup_file, files_count_in_path):
+    current_count_parsing_files = 0
+    last_time_current_state_of_parsing_files_printed = time.time()
     for root, dirs, files in os.walk(path):
         dirs[:] = [d for d in dirs if d not in EXCLUDED_DIRECTORIES]
         backup_file.write("\n" + root)
@@ -59,8 +66,15 @@ def parse_all_folders_and_files(path, backup_file, files_count_in_path):
                 time_format_temp = time.gmtime(timestamp)
                 time_format = time.strftime("%x %X", time_format_temp)
                 backup_file.write("\n" + "--- " + path_name + " *** " + time_format + " *** " + str(size) + " Ko")
+                current_count_parsing_files += 1
             except Exception as e:
                 print("Error: " + str(e))
+            finally:
+                current_time = time.time()
+                if current_time > last_time_current_state_of_parsing_files_printed + 1:
+                    print_current_state_of_parsing_files(current_count_parsing_files, files_count_in_path, path)
+                    last_time_current_state_of_parsing_files_printed = current_time
+    print_current_state_of_parsing_files(current_count_parsing_files, files_count_in_path, path)
     backup_file.write("\n\nNumber of files in the directory " + path + " : " + str(files_count_in_path))
 
 
