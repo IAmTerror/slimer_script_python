@@ -47,8 +47,14 @@ def parse_directories(path, backup_file):
 
 
 def print_current_state_of_parsing_files(current_count_in_path, total_files_count_in_path, path):
-    percentage = round((current_count_in_path / total_files_count_in_path) * 100, 2)
-    print(f"files processed in {path} : {current_count_in_path} of {total_files_count_in_path} ({percentage}%)")
+    percentage = None
+    if total_files_count_in_path != 0:
+        try:
+            percentage = round((current_count_in_path / total_files_count_in_path) * 100, 2)
+        except ZeroDivisionError as e:
+            logging.error("Error: " + str(e))
+        finally:
+            print(f"files processed in {path} : {current_count_in_path} of {total_files_count_in_path} ({percentage}%)")
 
 
 def parse_all_folders_and_files(path, backup_file, files_count_in_path):
