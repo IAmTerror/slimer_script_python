@@ -5,8 +5,17 @@
 
 # Root of the disks or directories that you want to parse for data backup.
 # You can add others, by adding path3, path4 keys...
+# Unix example
 DIRECTORIES_TO_BE_SCANNED_FOR_BACKUP = {'path1': '/home/toto/',
                                         'path2': '/'}
+# Windows with NAS Synology example
+# DIRECTORIES_TO_BE_SCANNED_FOR_BACKUP = {'path1': 'C:/',
+#                                         'path2': 'D:/',
+#                                         'path3': 'F:/',
+#                                         'path4': r'\\Nas1\homes',
+#                                         'path5': r'\\Nas1\music',
+#                                         'path6': r'\\Nas1\photo',
+#                                         'path7': r'\\Nas1\video'}
 
 # Directory where you want to save (locally) your logs.
 SLIMER_SCRIPT_ROOT_LOGS_PATH = '/******/******/log/slimer_script'

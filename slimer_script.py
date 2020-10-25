@@ -3,7 +3,6 @@
 
 from utilities import *
 from constants import *
-import threading
 
 
 def upload_slimer_script_log(backup_file):
@@ -44,5 +43,4 @@ def slimer_script():
     backup_file.close()
     logging.info("All paths have been scanned. The backup file is saved")
 
-    # TODO
-    # upload_slimer_script_log(backup_file)
+    upload_slimer_script_log(backup_file)
