@@ -38,9 +38,11 @@ Because I'm a man a little paranoid. If one of my many hard drives decides to di
     upload_slimer_script_log(backup_file)
     ```
    
-7. Create on your server (if you want to make a remote backup of your logs) a directory at your convenience for the Phoenix Down Script application. In this directory you have to create a `log/slimer_script` folder. Then inside the `log/slimer_script` folder, you need to create a `logger` sub-folder ;
+7. Create on your server (if you want to make a remote backup of your logs) a directory at your convenience for the Phoenix Down Script application (depending on the paths you set in step 3). In this directory you have to create a `log/slimer_script` folder. Then inside the `log/slimer_script` folder, you need to create a `logger` sub-folder ;
+
+8. Do the same on your computer (or any other storage medium) for local backup (depending on the paths you set in step 3).
     
-8. Run `main.py` ! Additional information : Slimer Script is above all intended to be executed automatically by your OS, via your task scheduler if you are on Windows, or `crontab` if you are on Linux.
+9. Run `main.py` ! Additional information : Slimer Script is above all intended to be executed automatically by your OS, via your task scheduler if you are on Windows, or `crontab` if you are on Linux.
 
 During the execution of Slimer Script, some non-critical errors may occur. These may be for example exceptions due to the inability to read certain files (insufficient rights, etc...). These errors will not prevent the script from executing properly.
 
