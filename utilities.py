@@ -185,3 +185,12 @@ def zip_files(file_paths_to_zip, directory_log_path, zip_name):
 def get_computer_name():
     computer_name = socket.gethostname()
     return computer_name
+
+
+def format_path(path):
+    formatted_path = str(path)
+    chars_to_replace = ["/", "\\", "\\\\"]
+    for char in chars_to_replace:
+        if char in formatted_path:
+            formatted_path = formatted_path.replace(char, "-")
+    return formatted_path

@@ -24,8 +24,11 @@ def slimer_script():
     timestamped_directory = create_timestamped_directory(SLIMER_SCRIPT_ROOT_LOGS_PATH)
 
     for path in DIRECTORIES_TO_BE_SCANNED_FOR_BACKUP.values():
-        backup_file = open(create_timestamped_and_named_file_name(APPLICATION_NAME + str(path).replace("/", "-")
-                                                                  + "-"
+
+        formatted_path = format_path(path)
+        print(formatted_path)
+
+        backup_file = open(create_timestamped_and_named_file_name(APPLICATION_NAME + formatted_path
                                                                   + SLIMER_SCRIPT_BACKUP_FILE_END_NAME),
                            "w", encoding="utf-8")
         backup_file.write(f"COMPUTER NAME : {computer_name}")
@@ -47,7 +50,8 @@ def slimer_script():
     logging.info('get all files in order to zip theses files')
     file_paths_to_zip = get_all_file_paths(SLIMER_SCRIPT_ROOT_LOGS_PATH + "/" + timestamped_directory)
 
-    zip_file = zip_files(file_paths_to_zip, SLIMER_SCRIPT_ROOT_LOGS_PATH + "/" + timestamped_directory, "backup")
+    zip_file = zip_files(file_paths_to_zip, SLIMER_SCRIPT_ROOT_LOGS_PATH + "/" + timestamped_directory,
+                         computer_name + "_backup")
 
     # opens the zip file for reading only in binary format in order to upload
     opened_zip_file = open(zip_file.filename, "rb")
