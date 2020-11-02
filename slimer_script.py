@@ -21,7 +21,7 @@ def slimer_script():
 
     logging.info("SLIMER SCRIPT is currently running. This can take up a few minutes...")
 
-    create_timpestamped_directory(SLIMER_SCRIPT_ROOT_LOGS_PATH)
+    timestamped_directory = create_timestamped_directory(SLIMER_SCRIPT_ROOT_LOGS_PATH)
 
     for path in DIRECTORIES_TO_BE_SCANNED_FOR_BACKUP.values():
         backup_file = open(create_timestamped_and_named_file_name(APPLICATION_NAME + str(path).replace("/", "-")
@@ -44,4 +44,8 @@ def slimer_script():
 
     logging.info("All paths have been scanned. All backup files are saved")
 
-    # upload_slimer_script_log(backup_file)
+    logging.info('get all files in order to zip theses files')
+    file_paths_to_zip = get_all_file_paths(SLIMER_SCRIPT_ROOT_LOGS_PATH + "/" + timestamped_directory)
+
+    zip_file = zip_files(file_paths_to_zip, SLIMER_SCRIPT_ROOT_LOGS_PATH + "/" + timestamped_directory, "backup")
+

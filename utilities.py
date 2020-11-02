@@ -9,6 +9,8 @@ import time
 from ftplib import FTP
 from constants import *
 from credentials import *
+from ftplib import FTP
+from zipfile import ZipFile, ZIP_DEFLATED
 
 
 def create_directory(path):
@@ -22,17 +24,19 @@ def create_directory(path):
     os.chdir(path)
 
 
-def create_timpestamped_directory(path):
+def create_timestamped_directory(path):
     os.chdir(path)
-    timestamp = time.strftime("%Y%m%d") + "_" + time.strftime("%H%M%S")
-    logging.info('creating the folder ' + path + "_" + timestamp + "...")
-    if not os.path.isdir(timestamp):
-        os.makedirs(timestamp)
-        logging.info("the folder " + path + "_" + timestamp + " was successfully created")
+    timestamped_directory_name = time.strftime("%Y%m%d") + "_" + time.strftime("%H%M%S")
+    timestamped_subpath_name = path + "/" + timestamped_directory_name
+    logging.info('creating the folder ' + timestamped_subpath_name + "...")
+    if not os.path.isdir(timestamped_directory_name):
+        os.makedirs(timestamped_directory_name)
+        logging.info("the folder " + timestamped_subpath_name + " was successfully created")
     else:
-        logging.info("the folder " + path + "_" + timestamp + " already exists, it's ok")
+        logging.info("the folder " + timestamped_subpath_name + " already exists, it's ok")
     # Designation of the working directory as current directory
-    os.chdir(timestamp)
+    os.chdir(timestamped_directory_name)
+    return timestamped_directory_name
 
 
 def create_timestamped_and_named_file_name(file_name):
@@ -143,6 +147,39 @@ def upload_file_to_server_ftp_without_logging_messages(file, filename, subdirect
     except ftplib.all_errors:
         print('unable to connect to ftp server')
     ftp.quit()
+
+
+def get_all_file_paths(directory):
+    # initializing empty file paths list
+    file_paths = []
+    # crawling through directory and subdirectories
+    for root, directories, files in os.walk(directory):
+        for filename in files:
+            # join the two strings in order to form the full filepath.
+            filepath = os.path.join(root, filename)
+            file_paths.append(filepath)
+    # returning all file paths
+    return file_paths
+
+
+def zip_files(file_paths_to_zip, directory_log_path, zip_name):
+    os.chdir(directory_log_path)
+    logging.info('following files will be zipped:')
+    for file_name in file_paths_to_zip:
+        logging.info(file_name)
+    # create timestamped file name
+    current_date = time.strftime("%Y%m%d")
+    current_time = time.strftime("%H%M%S")
+    zip_name = current_date + "_" + current_time + "_" + zip_name + ".zip"
+    # writing files to a zipfile
+    logging.info('zipping files...')
+    with ZipFile(zip_name, mode='w', compression=ZIP_DEFLATED, allowZip64=False) as zip:
+        # writing each file one by one
+        for file in file_paths_to_zip:
+            zip.write(file)
+        zip.close()
+    logging.info('all files zipped successfully !')
+    return zip
 
 
 def get_computer_name():
