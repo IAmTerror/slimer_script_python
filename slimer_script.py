@@ -17,17 +17,18 @@ def upload_slimer_script_log(backup_file):
 def slimer_script():
     computer_name = get_computer_name()
 
-    backup_file = open(create_timestamped_and_named_file_name(APPLICATION_NAME + "_" +
-                                                              SLIMER_SCRIPT_BACKUP_FILE_END_NAME), "w",
-                       encoding="utf-8")
-
     logging.info(f"COMPUTER NAME : {computer_name}")
-    backup_file.write(f"COMPUTER NAME : {computer_name}")
 
-    logging.info("SLIMER SCRIPT is currently running : creation of the backup file. "
-                 "This can take up a few minutes...")
+    logging.info("SLIMER SCRIPT is currently running. This can take up a few minutes...")
 
     for path in DIRECTORIES_TO_BE_SCANNED_FOR_BACKUP.values():
+        # TODO : in timpestamped folder
+        # TODO : remove Timestamp in name backup file
+        backup_file = open(create_timestamped_and_named_file_name(APPLICATION_NAME + str(path).replace("/", "-")
+                                                                  + "-"
+                                                                  + SLIMER_SCRIPT_BACKUP_FILE_END_NAME),
+                           "w", encoding="utf-8")
+        backup_file.write(f"COMPUTER NAME : {computer_name}")
         logging.info(f"Counting the number of files in the folder {path} ...")
         files_count_in_path = count_files_in_a_directory(path)
         logging.info(f"Number of files in the folder {path} : {files_count_in_path}")
@@ -39,8 +40,8 @@ def slimer_script():
         parse_all_folders_and_files(path, backup_file, files_count_in_path)
         backup_file.write("\n\n################################################################################ \n")
         logging.info(f"The backup of the data of the files in the directory {path} has been completed")
+        backup_file.close()
 
-    backup_file.close()
-    logging.info("All paths have been scanned. The backup file is saved")
+    logging.info("All paths have been scanned. All backup files are saved")
 
-    upload_slimer_script_log(backup_file)
+    # upload_slimer_script_log(backup_file)
