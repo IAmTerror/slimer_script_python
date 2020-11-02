@@ -49,3 +49,15 @@ def slimer_script():
 
     zip_file = zip_files(file_paths_to_zip, SLIMER_SCRIPT_ROOT_LOGS_PATH + "/" + timestamped_directory, "backup")
 
+    # opens the zip file for reading only in binary format in order to upload
+    opened_zip_file = open(zip_file.filename, "rb")
+
+    upload_file_to_server_ftp(opened_zip_file, zip_file.filename)
+
+    opened_zip_file.close()
+
+    logging.info('deleting local zip file...')
+    os.remove(zip_file.filename)
+
+    logging.info('delete local zip file done')
+
