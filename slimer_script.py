@@ -21,9 +21,9 @@ def slimer_script():
 
     logging.info("SLIMER SCRIPT is currently running. This can take up a few minutes...")
 
+    create_timpestamped_directory(SLIMER_SCRIPT_ROOT_LOGS_PATH)
+
     for path in DIRECTORIES_TO_BE_SCANNED_FOR_BACKUP.values():
-        # TODO : in timpestamped folder
-        # TODO : remove Timestamp in name backup file
         backup_file = open(create_timestamped_and_named_file_name(APPLICATION_NAME + str(path).replace("/", "-")
                                                                   + "-"
                                                                   + SLIMER_SCRIPT_BACKUP_FILE_END_NAME),

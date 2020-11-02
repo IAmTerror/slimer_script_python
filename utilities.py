@@ -22,6 +22,19 @@ def create_directory(path):
     os.chdir(path)
 
 
+def create_timpestamped_directory(path):
+    os.chdir(path)
+    timestamp = time.strftime("%Y%m%d") + "_" + time.strftime("%H%M%S")
+    logging.info('creating the folder ' + path + "_" + timestamp + "...")
+    if not os.path.isdir(timestamp):
+        os.makedirs(timestamp)
+        logging.info("the folder " + path + "_" + timestamp + " was successfully created")
+    else:
+        logging.info("the folder " + path + "_" + timestamp + " already exists, it's ok")
+    # Designation of the working directory as current directory
+    os.chdir(timestamp)
+
+
 def create_timestamped_and_named_file_name(file_name):
     computer_name = socket.gethostname()
     timestamp = time.strftime("%Y%m%d") + "_" + time.strftime("%H%M%S")
