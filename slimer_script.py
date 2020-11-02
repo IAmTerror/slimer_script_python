@@ -26,7 +26,6 @@ def slimer_script():
     for path in DIRECTORIES_TO_BE_SCANNED_FOR_BACKUP.values():
 
         formatted_path = format_path(path)
-        print(formatted_path)
 
         backup_file = open(create_timestamped_and_named_file_name(APPLICATION_NAME + formatted_path
                                                                   + SLIMER_SCRIPT_BACKUP_FILE_END_NAME),
