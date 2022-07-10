@@ -46,21 +46,21 @@ def slimer_script():
 
     logging.info("All paths have been scanned. All backup files are saved")
 
-    logging.info('get all files in order to zip theses files')
-    file_paths_to_zip = get_all_file_paths(SLIMER_SCRIPT_ROOT_LOGS_PATH + "/" + timestamped_directory)
-
-    zip_file = zip_files(file_paths_to_zip, SLIMER_SCRIPT_ROOT_LOGS_PATH + "/" + timestamped_directory,
-                         computer_name + "_backup")
-
-    # opens the zip file for reading only in binary format in order to upload
-    opened_zip_file = open(zip_file.filename, "rb")
-
-    upload_file_to_server_ftp(opened_zip_file, zip_file.filename)
-
-    opened_zip_file.close()
-
-    logging.info('deleting local zip file...')
-    os.remove(zip_file.filename)
-
-    logging.info('delete local zip file done')
+    # logging.info('get all files in order to zip theses files')
+    # file_paths_to_zip = get_all_file_paths(SLIMER_SCRIPT_ROOT_LOGS_PATH + "/" + timestamped_directory)
+    #
+    # zip_file = zip_files(file_paths_to_zip, SLIMER_SCRIPT_ROOT_LOGS_PATH + "/" + timestamped_directory,
+    #                      computer_name + "_backup")
+    #
+    # # opens the zip file for reading only in binary format in order to upload
+    # opened_zip_file = open(zip_file.filename, "rb")
+    #
+    # upload_file_to_server_ftp(opened_zip_file, zip_file.filename)
+    #
+    # opened_zip_file.close()
+    #
+    # logging.info('deleting local zip file...')
+    # os.remove(zip_file.filename)
+    #
+    # logging.info('delete local zip file done')
 

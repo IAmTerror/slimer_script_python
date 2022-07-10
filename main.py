@@ -31,5 +31,10 @@ except Exception as e:
 
 logger_script()
 
-alm = Alerts()
-alm.run_script()
+# alm = Alerts()
+# alm.run_script()
+
+# TODO: os.path ?
+# TODO : unit tests
+# TODO : exceptions
+# TODO : deployment
